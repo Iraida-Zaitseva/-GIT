@@ -17,7 +17,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = null;
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.createSQLQuery("""
+
+            session.createNativeQuery("""
                     CREATE TABLE IF NOT EXISTS users (
                         id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                         name VARCHAR(50),
@@ -39,7 +40,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = null;
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.createSQLQuery("DROP TABLE IF EXISTS users").executeUpdate();
+            session.createNativeQuery("DROP TABLE IF EXISTS users").executeUpdate();
             transaction.commit();
             System.out.println("Таблица пользователей удалена!");
         } catch (Exception e) {
@@ -55,7 +56,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             User user = new User(name, lastName, age);
-            session.save(user);
+            session.persist(user); // modern method
             transaction.commit();
             System.out.printf("Пользователь с именем %s добавлен в базу%n", name);
         } catch (Exception e) {
@@ -72,7 +73,7 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction = session.beginTransaction();
             User user = session.get(User.class, id);
             if (user != null) {
-                session.delete(user);
+                session.remove(user); // modern method
                 System.out.printf("Пользователь с id=%d удалён%n", id);
             }
             transaction.commit();
