@@ -9,20 +9,21 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-    public UserDaoJDBCImpl() { }
+    public UserDaoJDBCImpl() {
+    }
 
     @Override
     public void createUsersTable() {
         try (Connection connection = Util.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate("""
-                CREATE TABLE IF NOT EXISTS users (
-                    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                    name VARCHAR(50),
-                    last_name VARCHAR(50),
-                    age TINYINT
-                )
-            """);
+                        CREATE TABLE IF NOT EXISTS users (
+                            id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                            name VARCHAR(50),
+                            last_name VARCHAR(50),
+                            age TINYINT
+                        )
+                    """);
             System.out.println("Таблица пользователей успешно создана!");
         } catch (SQLException e) {
             System.out.println("Ошибка при создании таблицы пользователей");

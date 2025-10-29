@@ -12,13 +12,13 @@ import java.sql.SQLException;
 
 public class Util {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/test_schema?useSSL=false&serverTimezone=UTC";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "RaechkaTogo020392";
+    private final String URL = "jdbc:mysql://localhost:3306/test_schema?useSSL=false&serverTimezone=UTC";
+    private final String USERNAME = "root";
+    private final String PASSWORD = "RaechkaTogo020392";
 
-    private static SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
-    public static SessionFactory getSessionFactory() {
+    public SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
@@ -39,8 +39,10 @@ public class Util {
 
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
+                System.out.println("✅ SessionFactory успешно создан");
+
             } catch (Exception e) {
-                System.err.println("Ошибка при создании SessionFactory: " + e);
+                System.err.println("❌ Ошибка при создании SessionFactory: " + e);
                 e.printStackTrace();
             }
         }
@@ -48,8 +50,12 @@ public class Util {
     }
 
     public static Connection getConnection() {
+        String url = "jdbc:mysql://localhost:3306/test_schema?useSSL=false&serverTimezone=UTC";
+        String username = "root";
+        String password = "RaechkaTogo020392";
+
         try {
-            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            return DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new RuntimeException("Ошибка при подключении к базе через JDBC", e);
         }
