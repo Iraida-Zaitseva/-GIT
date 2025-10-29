@@ -9,14 +9,16 @@ public class Util {
     private final String USERNAME = "root";
     private final String PASSWORD = "RaechkaTogo020392";
 
-    public Connection getConnection() throws SQLException {
+    public Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // важно для тестов
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection.setAutoCommit(true);
+            return connection;
         } catch (ClassNotFoundException e) {
-            throw new SQLException("MySQL JDBC Driver not found", e);
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка при подключении к базе", e);
         }
-        Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        connection.setAutoCommit(true);
-        return connection;
     }
 }

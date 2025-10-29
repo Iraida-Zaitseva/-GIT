@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private final Connection connection;
+
+    private final Connection connection = new Util().getConnection();
 
     private static final String CREATE_TABLE_SQL = """
             CREATE TABLE IF NOT EXISTS users (
@@ -26,11 +27,6 @@ public class UserDaoJDBCImpl implements UserDao {
     private static final String TRUNCATE_TABLE_SQL = "TRUNCATE TABLE users";
 
     public UserDaoJDBCImpl() {
-        try {
-            this.connection = new Util().getConnection();
-        } catch (SQLException e) {
-            throw new RuntimeException("Ошибка при установлении соединения с БД", e);
-        }
     }
 
     @Override
