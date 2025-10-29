@@ -1,0 +1,9 @@
+# IntelliJ IDEA
+.idea/
+
+# Compiled classes
+target/
+
+# OS files
+*.iml
+.DS_Store
