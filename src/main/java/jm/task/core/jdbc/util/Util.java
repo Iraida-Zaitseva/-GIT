@@ -15,10 +15,8 @@ public class Util {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             connection.setAutoCommit(true);
             return connection;
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("MySQL JDBC Driver not found", e);
-        } catch (SQLException e) {
-            throw new RuntimeException("Ошибка при подключении к базе", e);
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException("Ошибка при подключении к базе данных", e);
         }
     }
 }
