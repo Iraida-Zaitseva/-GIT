@@ -14,14 +14,15 @@ public class MainApp {
 
         UserService userService = context.getBean(UserService.class);
 
-        userService.save(new User("Alice", 25, new Car("BMW", 3)));
-        userService.save(new User("Bob", 30, new Car("Audi", 5)));
-        userService.save(new User("Charlie", 35, new Car("Mercedes", 7)));
-        userService.save(new User("Diana", 40, new Car("Toyota", 1)));
+        userService.saveUser(new User("Alice", 25, new Car("BMW", 3)));
+        userService.saveUser(new User("Bob", 30, new Car("Audi", 5)));
+        userService.saveUser(new User("Charlie", 35, new Car("Mercedes", 7)));
+        userService.saveUser(new User("Diana", 40, new Car("Toyota", 1)));
 
         System.out.println("All users:");
         userService.getAllUsers().forEach(
-                u -> System.out.println(u.getName() + " — " + u.getCar().getModel()));
+                u -> System.out.println(u.getName() + " — " + u.getCar().getModel())
+        );
 
         User found = userService.getUserByCar("BMW", 3);
         System.out.println("Found user: " + found.getName());

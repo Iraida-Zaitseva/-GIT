@@ -13,7 +13,7 @@ public class Car {
     @Column(nullable = false)
     private String model;
 
-    @Column(name = "series", nullable = false)
+    @Column(nullable = false)
     private int series;
 
     public Car() {}
@@ -23,7 +23,6 @@ public class Car {
         this.series = series;
     }
 
-    // Геттеры и сеттеры
     public int getId() { return id; }
     public String getModel() { return model; }
     public int getSeries() { return series; }

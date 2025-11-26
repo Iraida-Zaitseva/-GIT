@@ -14,7 +14,7 @@ public class UserDaoImp implements UserDao {
    private EntityManager entityManager;
 
    @Override
-   public void add(User user) {
+   public void addUser(User user) {
       entityManager.persist(user);
    }
 
@@ -26,7 +26,10 @@ public class UserDaoImp implements UserDao {
    @Override
    public User findUserByCar(String model, int series) {
       return entityManager
-              .createQuery("SELECT u FROM User u WHERE u.car.model = :model AND u.car.series = :series", User.class)
+              .createQuery(
+                      "SELECT u FROM User u WHERE u.car.model = :model AND u.car.series = :series",
+                      User.class
+              )
               .setParameter("model", model)
               .setParameter("series", series)
               .getSingleResult();

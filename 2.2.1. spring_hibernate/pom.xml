@@ -15,28 +15,24 @@
 
     <dependencies>
 
-        <!-- Spring Core -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.3.30</version>
         </dependency>
 
-        <!-- Spring ORM -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>5.3.30</version>
         </dependency>
 
-        <!-- Hibernate Core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.6.15.Final</version>
         </dependency>
 
-        <!-- JavaEE API со всеми javax.* (обязательно!) -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -44,7 +40,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- MySQL драйвер -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

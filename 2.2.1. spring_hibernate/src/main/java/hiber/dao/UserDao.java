@@ -4,7 +4,7 @@ import com.example.springhibernate.model.User;
 import java.util.List;
 
 public interface UserDao {
-   void add(User user);
+   void addUser(User user);
    List<User> listUsers();
    User findUserByCar(String model, int series);
 }

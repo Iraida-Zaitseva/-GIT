@@ -17,7 +17,7 @@ public class User {
     private int age;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "car_id", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "car_id", unique = true)
     private Car car;
 
     public User() {}
@@ -28,7 +28,6 @@ public class User {
         this.car = car;
     }
 
-    // Геттеры и сеттеры
     public int getId() { return id; }
     public String getName() { return name; }
     public int getAge() { return age; }
