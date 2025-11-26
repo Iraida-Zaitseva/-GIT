@@ -1,8 +1,0 @@
-com\example\springhibernate\service\UserService.class
-com\example\springhibernate\dao\UserDao.class
-com\example\springhibernate\service\UserServiceImp.class
-com\example\springhibernate\MainApp.class
-com\example\springhibernate\model\User.class
-com\example\springhibernate\config\AppConfig.class
-com\example\springhibernate\dao\UserDaoImp.class
-com\example\springhibernate\model\Car.class
