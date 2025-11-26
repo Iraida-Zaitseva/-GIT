@@ -1,12 +1,15 @@
-# IDEA
+# IntelliJ IDEA
 .idea/
 *.iml
-out/
 
 # Maven
 target/
+*.class
 
-# OS
+# Build output
+out/
+
+# OS files
 .DS_Store
 Thumbs.db
 
