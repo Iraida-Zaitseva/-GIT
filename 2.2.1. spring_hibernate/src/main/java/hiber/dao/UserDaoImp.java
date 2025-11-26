@@ -1,29 +1,34 @@
-package hiber.dao;
+package com.example.springhibernate.dao;
 
-import hiber.model.User;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.springhibernate.model.User;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.TypedQuery;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
-   private SessionFactory sessionFactory;
+   @PersistenceContext
+   private EntityManager entityManager;
 
    @Override
    public void add(User user) {
-      sessionFactory.getCurrentSession().save(user);
+      entityManager.persist(user);
    }
 
    @Override
-   @SuppressWarnings("unchecked")
    public List<User> listUsers() {
-      TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
-      return query.getResultList();
+      return entityManager.createQuery("FROM User", User.class).getResultList();
    }
 
+   @Override
+   public User findUserByCar(String model, int series) {
+      return entityManager
+              .createQuery("SELECT u FROM User u WHERE u.car.model = :model AND u.car.series = :series", User.class)
+              .setParameter("model", model)
+              .setParameter("series", series)
+              .getSingleResult();
+   }
 }

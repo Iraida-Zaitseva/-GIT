@@ -1,4 +1,4 @@
-package hiber.model;
+package com.example.springhibernate.model;
 
 import javax.persistence.*;
 
@@ -6,56 +6,35 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-   @Column(name = "name")
-   private String firstName;
+    @Column(nullable = false)
+    private String name;
 
-   @Column(name = "last_name")
-   private String lastName;
+    @Column(nullable = false)
+    private int age;
 
-   @Column(name = "email")
-   private String email;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "car_id", referencedColumnName = "id", unique = true)
+    private Car car;
 
-   public User() {}
-   
-   public User(String firstName, String lastName, String email) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
-   }
+    public User() {}
 
-   public Long getId() {
-      return id;
-   }
+    public User(String name, int age, Car car) {
+        this.name = name;
+        this.age = age;
+        this.car = car;
+    }
 
-   public void setId(Long id) {
-      this.id = id;
-   }
+    // Геттеры и сеттеры
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    public Car getCar() { return car; }
 
-   public String getFirstName() {
-      return firstName;
-   }
-
-   public void setFirstName(String firstName) {
-      this.firstName = firstName;
-   }
-
-   public String getLastName() {
-      return lastName;
-   }
-
-   public void setLastName(String lastName) {
-      this.lastName = lastName;
-   }
-
-   public String getEmail() {
-      return email;
-   }
-
-   public void setEmail(String email) {
-      this.email = email;
-   }
+    public void setName(String name) { this.name = name; }
+    public void setAge(int age) { this.age = age; }
+    public void setCar(Car car) { this.car = car; }
 }

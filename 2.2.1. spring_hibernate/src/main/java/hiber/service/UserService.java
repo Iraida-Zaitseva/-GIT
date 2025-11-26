@@ -1,10 +1,10 @@
-package hiber.service;
+package com.example.springhibernate.service;
 
-import hiber.model.User;
-
+import com.example.springhibernate.model.User;
 import java.util.List;
 
 public interface UserService {
-    void add(User user);
-    List<User> listUsers();
+    void save(User user);
+    List<User> getAllUsers();
+    User getUserByCar(String model, int series);
 }
