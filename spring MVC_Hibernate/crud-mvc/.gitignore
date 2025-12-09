@@ -1,25 +1,11 @@
-# Maven build artifacts
-target/
-*.jar
-*.war
-
-# IDE files (IntelliJ IDEA)
+# Игнорировать файлы и папки IDE
 .idea/
 *.iml
-out/
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Logs
+# Игнорировать временные и системные файлы
+*.class
 *.log
-
-# Deployment artifacts (IntelliJ)
-out/artifacts/
-
-# External or temp files (игнорируем копии и внешние папки)
-web/
-web2/
-../../*
-../*
+*.out
+*.swp
+.DS_Store
+target/
