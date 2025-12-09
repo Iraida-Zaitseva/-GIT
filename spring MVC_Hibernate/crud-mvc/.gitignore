@@ -1,0 +1,25 @@
+# Maven build artifacts
+target/
+*.jar
+*.war
+
+# IDE files (IntelliJ IDEA)
+.idea/
+*.iml
+out/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Deployment artifacts (IntelliJ)
+out/artifacts/
+
+# External or temp files (игнорируем копии и внешние папки)
+web/
+web2/
+../../*
+../*
